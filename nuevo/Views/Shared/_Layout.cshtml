@@ -1,37 +1,54 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Layout principal donde controlo las vistas y todo eso -->
+    <!-- Configuración básica del documento -->
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
+
+    <!-- Título del sitio -->
     <title>Control de Mantenimiento</title>
+
+    <!-- Estilos externos -->
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="~/css/styles.css" rel="stylesheet" />
+
+    <!-- Iconos de FontAwesome -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
+
 <body class="sb-nav-fixed">
+    <!-- Barra superior de navegación donde se muestra el logo y el usuario -->
     <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #d7d8dc;">
+        <!-- Logo de la aplicación -->
         <a class="navbar-brand ps-3" href="@Url.Action("Inicio", "Home")">
             <img src="~/images/LCFE.png" style="height: 30px;">
         </a>
+
+        <!-- Botón para mostrar y ocultar la barra lateral -->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
             <i class="fas fa-bars"></i>
         </button>
+
+        <!-- Campo de búsqueda
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
             <div class="input-group">
                 <input class="form-control" type="text" placeholder="Buscar..." aria-label="Buscar..." />
                 <button class="btn btn-primary" type="button"><i class="fas fa-search"></i></button>
             </div>
-        </form>
+        </form> -->
+
+        <!-- Menú de usuario -->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown">
                     <i class="fas fa-user fa-fw"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Opciones</a></li>
+                    <li><a class="dropdown-item" href="#">Perfil</a></li>
                     <li><a class="dropdown-item" href="#">Activity Log</a></li>
                     <li><hr class="dropdown-divider" /></li>
                     <li><a class="dropdown-item" href="#">Salir</a></li>
@@ -39,93 +56,74 @@
             </li>
         </ul>
     </nav>
+
+    <!-- Contenedor principal que divide la barra lateral y el contenido -->
     <div id="layoutSidenav">
+        <!-- Barra lateral -->
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="background-color: #008e60;">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Core</div>
-                        <!-- Enlace actualizado aquí -->
+
+                        <!-- Enlaces AJAX que cargan contenido dinámicamente sin recargar toda la página
+                                así seran todos los botones
+                         -->
                         <a href="/Home/Inicio" class="nav-link ajax-link" style="color: white;">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Inicio
                         </a>
-
                         <a href="/Home/Agendar" class="nav-link ajax-link" style="color: white;">
                             <div class="sb-nav-link-icon"><i class="fas fa-calendar-plus"></i></div>
                             Agendar
                         </a>
 
-                        <div class="sb-sidenav-menu-heading">Interface</div>
-
-                        <a class="nav-link" asp-controller="Home" asp-action="Agendar" style="color: white;">
-                            <div class="sb-nav-link-icon"><i class="fas fa-calendar-plus"></i></div>
-                            Agendar
-                        </a>
-
-                        <div class="collapse" id="collapseLayouts">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="layout-static.html" style="color: white;">Mantenimiento Preventivo</a>
-                                <a class="nav-link" href="layout-sidenav-light.html" style="color: white;">Mantenimiento Correctivo</a>
-                            </nav>
-                        </div>
-
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" style="color: white;">
-                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            Ordenes de Servicio
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                        </a>
-                        <div class="collapse" id="collapsePages">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth">
-                                    Authentication
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseAuth">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="login.html">Login</a>
-                                        <a class="nav-link" href="register.html">Register</a>
-                                        <a class="nav-link" href="password.html">Forgot Password</a>
-                                    </nav>
-                                </div>
-                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError">
-                                    Error
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                </a>
-                                <div class="collapse" id="pagesCollapseError">
-                                    <nav class="sb-sidenav-menu-nested nav">
-                                        <a class="nav-link" href="401.html">401 Page</a>
-                                        <a class="nav-link" href="404.html">404 Page</a>
-                                        <a class="nav-link" href="500.html">500 Page</a>
-                                    </nav>
-                                </div>
-                            </nav>
-                        </div>
-
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="charts.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                            Charts
-                        </a>
-                        <a class="nav-link" href="tables.html">
-                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Tables
-                        </a>
-                    </div>
-                </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small">Logged in as:</div>
-                    Jose Manuel
                 </div>
             </nav>
         </div>
 
+        <!-- Contenido principal del sitio -->
         <div id="layoutSidenav_content">
             <main>
                 <div id="contenido-principal">
-                    @RenderBody()
+                    @RenderBody() <!-- Aquí se carga el contenido de cada vista -->
                 </div>
             </main>
+
+            <table id="tablaServicios" class="table table-striped table-bordered" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Fecha Programada</th>
+                        <th>Equipo</th>
+                        <th>Ubicación</th>
+                        <th>Hoja de Servicio</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>09/04/2025</td>
+                        <td>CFEmatico</td>
+                        <td>San Felipe</td>
+                        <td><button class="btn btn-primary btn-sm">Ver hoja</button></td>
+                    </tr>
+                    <tr>
+                        <td>09/04/2025</td>
+                        <td>CFEcam</td>
+                        <td>Periferico</td>
+                        <td><button class="btn btn-primary btn-sm">Ver hoja</button></td>
+                    </tr>
+                    <tr>
+                        <td>09/04/2025</td>
+                        <td>CFEmatico</td>
+                        <td>Periferico</td>
+                        <td><button class="btn btn-primary btn-sm">Ver hoja</button></td>
+                    </tr>
+                    <!-- Puedes agregar más filas aquí -->
+                </tbody>
+            </table>
+
+
+            <!-- Pie de página -->
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
@@ -141,6 +139,7 @@
         </div>
     </div>
 
+    <!-- Scripts de Bootstrap y otros recursos -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="~/js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
@@ -149,16 +148,20 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     <script src="~/js/datatables-simple-demo.js"></script>
 
+    <!-- jQuery para AJAX -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+        // Código para que los enlaces con clase 'ajax-link' carguen contenido dinámico en #contenido-principal
         $(document).ready(function () {
             $('.ajax-link').click(function (e) {
                 e.preventDefault();
                 var url = $(this).attr('href');
 
+                // Carga solo el contenido del div #contenido-principal de la página destino
                 $('#contenido-principal').load(url + ' #contenido-principal > *');
             });
         });
     </script>
 </body>
 </html>
+
