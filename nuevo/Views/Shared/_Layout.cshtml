@@ -15,6 +15,8 @@
     <!-- Estilos externos -->
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="~/css/styles.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
 
     <!-- Iconos de FontAwesome -->
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -22,7 +24,8 @@
 
 <body class="sb-nav-fixed">
     <!-- Barra superior de navegación donde se muestra el logo y el usuario -->
-    <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #d7d8dc;">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark d-flex w-100 justify-content-between" style="background-color: #d7d8dc;">
+
         <!-- Logo de la aplicación -->
         <a class="navbar-brand ps-3" href="@Url.Action("Inicio", "Home")">
             <img src="~/images/LCFE.png" style="height: 30px;">
@@ -38,15 +41,18 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown">
                     <i class="fas fa-user fa-fw"></i>
+                    <!-- Nombre del usuario al lado del ícono -->
+                    <span class="ms-2">Jose Manuel</span>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#">Perfil</a></li>
-                    <li><a class="dropdown-item" href="#">Activity Log</a></li>
+                    <li><a class="dropdown-item" href="#">Opciones</a></li>
                     <li><hr class="dropdown-divider" /></li>
                     <li><a class="dropdown-item" href="#">Salir</a></li>
                 </ul>
             </li>
         </ul>
+
     </nav>
 
     <!-- Contenedor principal que divide la barra lateral y el contenido -->
@@ -62,8 +68,20 @@
                                 así seran todos los botones
                          -->
                         <a href="/Home/Inicio" class="nav-link ajax-link" style="color: white;">
-                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                             Inicio
+                        </a>
+                        <a href="/Home/Agendar" class="nav-link ajax-link" style="color: white;">
+                            <div class="sb-nav-link-icon"><i class="fas fa-eye"></i></div>
+                            Monitoreo de CFEmáticos
+                        </a>
+                        <a href="/Home/Agendar" class="nav-link ajax-link" style="color: white;">
+                            <div class="sb-nav-link-icon"><i class="fas fa-calendar-plus"></i></div>
+                            Agendar Mantenimientos
+                        </a>
+                        <a href="/Home/Agendar" class="nav-link ajax-link" style="color: white;">
+                            <div class="sb-nav-link-icon"><i class="fas fa-upload"></i></div>
+                            Terminar Mantenimiento
                         </a>
                         <a href="/Home/Agendar" class="nav-link ajax-link" style="color: white;">
                             <div class="sb-nav-link-icon"><i class="fas fa-calendar-plus"></i></div>
@@ -121,6 +139,10 @@
             });
         });
     </script>
+
+
+   
+
 </body>
 </html>
 
