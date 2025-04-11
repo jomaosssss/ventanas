@@ -30,9 +30,23 @@
                         <td>CFEmatico</td>
                         <td>210900</td>
                         <td class="text-center align-middle">
-                            <button class="btn btn-sm" style="background-color: #d7d8dc; color: black; border: 1px solid #b0b0b0;" data-bs-toggle="modal" data-bs-target="#modalPdf">
+                            <button class="verPDF" style="background-color: #d7d8dc; color: black; border: 1px solid #b0b0b0;" data-bs-toggle="modal" data-bs-target="#modalPdf">
                                  <i class="bi bi-eye"></i>
                             </button>
+ 
+
+                            <div id="ventanaEmergente" style="display:none;">
+                                <iframe id="pdfViewer" width="100%" height="600px"></iframe>
+                            </div>
+
+                            <script>
+                                document.getElementById("verPDF").addEventListener("click", function () {
+                                    document.getElementById("ventanaEmergente").style.display = "block";
+                                    var iframe = document.getElementById("pdfViewer");
+                                    iframe.src = "/pdf/GenerarPDF";  // Llamada al controlador que genera el PDF
+                                });
+                            </script>
+
                         </td>
                     </tr>
                     <tr>
