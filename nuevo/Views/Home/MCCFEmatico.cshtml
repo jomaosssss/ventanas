@@ -14,12 +14,21 @@
                 <div class="row mb-3">
                     <div class="col-md-4">
                         <label for="numeroEquipo" class="form-label fw-bold">Num. Activo Fijo:</label>
-                        <input type="text" class="form-control" id="numeroEquipo" placeholder="Num. Activo Fijo" />
+                        <input type="number"
+                               class="form-control"
+                               id="numeroEquipo"
+                               name="numeroEquipo"
+                               placeholder="Num. Activo Fijo"
+                               min="0"
+                               max="999999"
+                               oninput="if(this.value.length > 6) this.value = this.value.slice(0,6)" />
                     </div>
                     <div class="col-md-4">
-                        <label for="numeroEquipo" class="form-label fw-bold">Centro:</label>
-                        <input type="text" class="form-control" id="numeroEquipo" placeholder="Centro" />
+                        <label for="centro" class="form-label fw-bold">Centro:</label>
+                        <input type="text" class="form-control" id="centro" placeholder="Centro"
+                               oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '')">
                     </div>
+
                     <div class="col-md-4">
                         <label for="fecha" class="form-label fw-bold">Fecha Programada:</label>
                         <input type="date" class="form-control" id="fecha" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
