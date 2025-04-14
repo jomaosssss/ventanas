@@ -40,6 +40,31 @@ namespace nuevo.Controllers
             return View();
         }
 
+        public IActionResult MCCFEmatico()
+        {
+            return PartialView("MCCFEmatico");
+        }
+
+        public IActionResult MCCFEturno()
+        {
+            return PartialView("MCCFEturno");
+        }
+
+        public IActionResult MCCFEcam()
+        {
+            return PartialView("MCCFEcam");
+        }
+
+        public IActionResult MCPC()
+        {
+            return PartialView("MCPC");
+        }
+
+        public IActionResult MCLaptop()
+        {
+            return PartialView("MCLaptop");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
