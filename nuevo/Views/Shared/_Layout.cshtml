@@ -75,7 +75,7 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-eye"></i></div>
                             Monitoreo de CFEmáticos
                         </a>
-                        <a href="/Home/Agendar" class="nav-link ajax-link" style="color: white;">
+                        <a href="/Home/Agendar" class="nav-link ajax-link ajax-link" style="color: white;">
                             <div class="sb-nav-link-icon"><i class="fas fa-calendar-plus"></i></div>
                             Agendar Mantenimientos
                         </a>
@@ -124,18 +124,29 @@
     <script src="~/assets/demo/chart-bar-demo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     <script src="~/js/datatables-simple-demo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @RenderSection("Scripts", required: false)
 
     <!-- jQuery para AJAX -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // Código para que los enlaces con clase 'ajax-link' carguen contenido dinámico en #contenido-principal
+        // Aquí es donde agregamos la variable
+        var vistaActual = ""; // ← Paso 1: la declaras aquí
+
         $(document).ready(function () {
             $('.ajax-link').click(function (e) {
                 e.preventDefault();
                 var url = $(this).attr('href');
 
-                // Carga solo el contenido del div #contenido-principal de la página destino
-                $('#contenido-principal').load(url + ' #contenido-principal > *');
+                if (url === vistaActual) return;
+
+                $('#contenido-principal').load(url + ' #contenido-principal > *', function () {
+                    vistaActual = url;
+
+                    if (url.includes("Agendar")) {
+                        $.getScript('/js/agendar.js');
+                    }
+                });
             });
         });
     </script>

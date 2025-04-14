@@ -2,7 +2,6 @@
     ViewData["Title"] = "Agendar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <div class="container-fluid px-4">
     <h1 class="mt-4">Agenda un mantenimiento</h1>
     <p>Hoy es: @DateTime.Now.ToString("dd/MM/yyyy")</p>
@@ -50,4 +49,58 @@
         </div>
 
     </div>
-</div
+</div>
+
+
+@section Scripts{
+
+    <script>
+        function mostrarDatos() {
+            const input = document.getElementById("inputExcel");
+            const formData = new FormData();
+            formData.append("ArchivoExcel", input.files[0]);
+
+            fetch("/Home/MostrarDatos", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                $("#tbData tbody").empty();
+                data.forEach(item => {
+                    $("#tbData tbody").append(
+                        $("<tr>").append(
+                            $("<td>").text(item.numactfijo),
+                            $("<td>").text(item.clavedivision),
+                            $("<td>").text(item.clavezona),
+                            $("<td>").text(item.claveagencia),
+                            $("<td>").text(item.clavetipomtto),
+                            $("<td>").text(item.fechaprogramada)
+                        )
+                    );
+                });
+            });
+        }
+
+         
+   
+        function enviarDatos() {
+            const input = document.getElementById("inputExcel");
+            const formData = new FormData();
+            formData.append("ArchivoExcel", input.files[0]);
+
+            fetch("/Home/EnviarDatos", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.mensaje);
+            });
+        }
+
+        
+    </script>
+}
+
+
