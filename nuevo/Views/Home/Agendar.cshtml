@@ -3,51 +3,46 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="container-fluid px-4">
-    <h1 class="mt-4">Agenda un mantenimiento</h1>
-    <p>Hoy es: @DateTime.Now.ToString("dd/MM/yyyy")</p>
-</div>
-
-<div class="row">
-    <div class="col-sm-12">
-
-        <div class="card">
-            <div class="card-header"> Cargar Excel</div>
-            <div class="card-body">
-
-                <div class="row">
-                    <div class="col-sm-4">
-                        <input class="form-control-file" type="file" id="inputExcel" />
-                    </div>
-                    <div class="col-sm-4">
-                        <button class="btn btn-warning" onclick="mostrarDatos()">Mostrar Datos</button>
-                        <button class="btn btn-success" onclick="enviarDatos()">Enviar Datos a BD</button>
-                    </div>
-                </div>
-
-                <hr />
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        <table id="tbData" class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>numactfijo</th>
-                                    <th>clavedivision</th>
-                                    <th>clavezona</th>
-                                    <th>claveagencia</th>
-                                    <th>clavetipomtto</th>
-                                    <th>fechaprogramada</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-            </div>
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-white">
+            <h4 class="mb-0">Agenda tus mantenimientos preventivos</h4>
+            <p>Hoy es: @DateTime.Now.ToString("dd/MM/yyyy")</p>
         </div>
 
+        <div class="card-body">
+
+            <div class="row mb-4 align-items-end">
+                <div class="col-md-4">
+                    <label for="inputExcel" class="form-label fw-bold">Cargar archivo Excel:</label>
+                    <input class="form-control" type="file" id="inputExcel" />
+                </div>
+                <div class="col-md-4 mt-3 mt-md-0">
+                    <button class="btn btn-warning me-2" onclick="mostrarDatos()">Mostrar Datos</button>
+                    <button class="btn btn-success" onclick="enviarDatos()">Enviar Datos a BD</button>
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="table-responsive">
+                <table id="tbData" class="table table-striped">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Num. Activo Fijo</th>
+                            <th>Clave División</th>
+                            <th>Clave Zona</th>
+                            <th>Clave Agencia</th>
+                            <th>Clave Tipo Mtto</th>
+                            <th>Fecha Programada</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Los datos se mostrarán dinámicamente aquí -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
     </div>
-</div
+</div>

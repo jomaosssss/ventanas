@@ -13,26 +13,12 @@
             <form>
                 <div class="row mb-3">
                     <div class="col-md-4">
-                        <label for="equipo" class="form-label fw-bold">Equipo:</label>
-                        <select class="form-select" id="equipo">
-                            <option selected>Selecciona un tipo de equipo</option>
-                            <option value="Otro">CFEmático</option>
-                            <option value="Otro">CFEcam</option>
-                            <option value="Otro">CFEturno</option>
-                            <option value="Otro">Equipo de Cómputo</option>
-                        </select>
+                        <label for="numeroEquipo" class="form-label fw-bold">Num. Activo Fijo:</label>
+                        <input type="text" class="form-control" id="numeroEquipo" placeholder="Num. Activo Fijo" />
                     </div>
                     <div class="col-md-4">
-                        <label for="numeroEquipo" class="form-label fw-bold">Número Equipo:</label>
-                        <input type="text" class="form-control" id="numeroEquipo" placeholder="Num. de Activo Fijo" />
-                    </div>
-                    <div class="col-md-4">
-                        <label for="fecha" class="form-label fw-bold">Fecha:</label>
+                        <label for="fecha" class="form-label fw-bold">Fecha Programada:</label>
                         <input type="date" class="form-control" id="fecha" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
-                    </div>
-                    <div class="col-md-4">
-                        <label for="numeroEquipo" class="form-label fw-bold">Número Equipo:</label>
-                        <input type="text" class="form-control" id="numeroEquipo" placeholder="Num. de Activo Fijo" />
                     </div>
                 </div>
 
