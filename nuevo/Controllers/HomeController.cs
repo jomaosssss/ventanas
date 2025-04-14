@@ -30,6 +30,11 @@ namespace nuevo.Controllers
             return View();
         }
 
+        public IActionResult AgendarMC()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

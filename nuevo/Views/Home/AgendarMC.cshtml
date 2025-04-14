@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Agendar Mantenimiento Correctivo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-white">
+            <h4 class="mb-0">Agendar Mantenimiento Correctivo</h4>
+            <p>Hoy es: @DateTime.Now.ToString("dd/MM/yyyy")</p>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="equipo" class="form-label fw-bold">Equipo:</label>
+                        <select class="form-select" id="equipo">
+                            <option selected>Selecciona un tipo de equipo</option>
+                            <option value="Otro">CFEmático</option>
+                            <option value="Otro">CFEcam</option>
+                            <option value="Otro">CFEturno</option>
+                            <option value="Otro">Equipo de Cómputo</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="numeroEquipo" class="form-label fw-bold">Número Equipo:</label>
+                        <input type="text" class="form-control" id="numeroEquipo" placeholder="Num. de Activo Fijo" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="fecha" class="form-label fw-bold">Fecha:</label>
+                        <input type="date" class="form-control" id="fecha" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+
+                    </div>
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-success px-4">Agendar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
