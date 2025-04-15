@@ -18,7 +18,9 @@ app.UseAuthorization();
 app.UseDeveloperExceptionPage();
 
 
-app.MapStaticAssets();
+                app.UseAuthorization();
+
+                app.MapStaticAssets();
 
                 app.MapControllerRoute(
                 name: "default",
