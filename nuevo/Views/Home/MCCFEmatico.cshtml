@@ -20,15 +20,27 @@
                                name="numeroEquipo"
                                placeholder="Num. Activo Fijo"
                                min="0"
-                               max="999999"
-                               oninput="if(this.value.length > 6) this.value = this.value.slice(0,6)" />
+                               max="99999999"
+                               oninput="if(this.value.length > 8) this.value = this.value.slice(0,8)" />
                     </div>
                     <div class="col-md-4">
                         <label for="centro" class="form-label fw-bold">Centro:</label>
-                        <input type="text" class="form-control" id="centro" placeholder="Centro"
-                               oninput="this.value = this.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, '')">
+                        <select class="form-select" id="centro">
+                            <option value="" disabled selected>Selecciona un centro</option>
+                            <option value="Centro Oaxaca">Oaxaca</option>
+                            <option value="Centro Madero">Madero</option>
+                            <option value="Centro Reforma">Reforma</option>
+                            <option value="Centro San Felipe">San Felipe</option>
+                            <option value="Centro Periférico">Periférico</option>
+                            <option value="Centro CAR">CAR</option>
+                            <option value="Centro Miahuatlán">Miahuatlán</option>
+                            <option value="Centro Ocotlán">Ocotlán</option>
+                            <option value="Centro Tlacolula">Tlacolula</option>
+                            <option value="Centro Etla">Etla</option>
+                            <option value="Centro Zaachila">Zaachila</option>
+                            <!-- Agrega más opciones según necesites -->
+                        </select>
                     </div>
-
                     <div class="col-md-4">
                         <label for="fecha" class="form-label fw-bold">Fecha Programada:</label>
                         <input type="date" class="form-control" id="fecha" value="@DateTime.Now.ToString("yyyy-MM-dd")" />

@@ -14,7 +14,32 @@
                 <div class="row mb-3">
                     <div class="col-md-4">
                         <label for="numeroEquipo" class="form-label fw-bold">Num. Activo Fijo:</label>
-                        <input type="text" class="form-control" id="numeroEquipo" placeholder="Num. Activo Fijo" />
+                        <input type="number"
+                               class="form-control"
+                               id="numeroEquipo"
+                               name="numeroEquipo"
+                               placeholder="Num. Activo Fijo"
+                               min="0"
+                               max="99999999"
+                               oninput="if(this.value.length > 8) this.value = this.value.slice(0,8)" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="centro" class="form-label fw-bold">Centro:</label>
+                        <select class="form-select" id="centro">
+                            <option value="" disabled selected>Selecciona un centro</option>
+                            <option value="Centro Oaxaca">Oaxaca</option>
+                            <option value="Centro Madero">Madero</option>
+                            <option value="Centro Reforma">Reforma</option>
+                            <option value="Centro San Felipe">San Felipe</option>
+                            <option value="Centro Periférico">Periférico</option>
+                            <option value="Centro CAR">CAR</option>
+                            <option value="Centro Miahuatlán">Miahuatlán</option>
+                            <option value="Centro Ocotlán">Ocotlán</option>
+                            <option value="Centro Tlacolula">Tlacolula</option>
+                            <option value="Centro Etla">Etla</option>
+                            <option value="Centro Zaachila">Zaachila</option>
+                            <!-- Agrega más opciones según necesites -->
+                        </select>
                     </div>
                     <div class="col-md-4">
                         <label for="fecha" class="form-label fw-bold">Fecha Programada:</label>
