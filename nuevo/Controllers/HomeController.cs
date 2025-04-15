@@ -22,13 +22,13 @@ namespace nuevo.Controllers
             _dbocontext = context;
         }
 
-        // Acción por defecto que muestra la vista Index.cshtml
+        // Acci�n por defecto que muestra la vista Index.cshtml
         public IActionResult Index()
         {
             return View();
         }
 
-        // Nueva acción que muestra la vista Inicio.cshtml (Dashboard)
+        // Nueva acci�n que muestra la vista Inicio.cshtml (Dashboard)
         public IActionResult Inicio()
         {
             return View();
@@ -38,9 +38,8 @@ namespace nuevo.Controllers
         {
             return View();
         }
-
         [HttpPost]
-        public IActionResult MostrarDatos ([FromForm] IFormFile ArchivoExcel)
+        public IActionResult MostrarDatos([FromForm] IFormFile ArchivoExcel)
         {
             Stream stream = ArchivoExcel.OpenReadStream();
 
@@ -85,7 +84,7 @@ namespace nuevo.Controllers
             }
 
             return StatusCode(StatusCodes.Status200OK, lista);
-         
+
         }
 
 
@@ -143,6 +142,35 @@ namespace nuevo.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult MCCFEmatico()
+        {
+            return PartialView("MCCFEmatico");
+        }
+
+        public IActionResult MCCFEturno()
+        {
+            return PartialView("MCCFEturno");
+        }
+
+        public IActionResult MCCFEcam()
+        {
+            return PartialView("MCCFEcam");
+        }
+
+        public IActionResult MCPC()
+        {
+            return PartialView("MCPC");
+        }
+
+        public IActionResult MCLaptop()
+        {
+            return PartialView("MCLaptop");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

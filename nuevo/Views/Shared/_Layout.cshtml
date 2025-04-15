@@ -24,36 +24,41 @@
 
 <body class="sb-nav-fixed">
     <!-- Barra superior de navegación donde se muestra el logo y el usuario -->
-    <nav class="sb-topnav navbar navbar-expand navbar-dark d-flex w-100 justify-content-between" style="background-color: #d7d8dc;">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark" style="background-color: #d7d8dc;">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
 
-        <!-- Logo de la aplicación -->
-        <a class="navbar-brand ps-3" href="@Url.Action("Inicio", "Home")">
-            <img src="~/images/LCFE.png" style="height: 30px;">
-        </a>
+            <!-- Botón y logo juntos -->
+            <div class="d-flex align-items-center">
+                <!-- Botón para mostrar/ocultar -->
+                <button class="btn btn-sm me-2" id="sidebarToggle" style="background-color: #d7d8dc; color: black;">
+                    <i class="fas fa-bars"></i>
+                </button>
 
-        <!-- Botón para mostrar y ocultar la barra lateral -->
-        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!">
-            <i class="fas fa-bars"></i>
-        </button>
 
-        <!-- Menú de usuario -->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown">
-                    <i class="fas fa-user fa-fw"></i>
-                    <!-- Nombre del usuario al lado del ícono -->
-                    <span class="ms-2">Jose Manuel</span>
+                <!-- Logo de la aplicación -->
+                <a class="navbar-brand ps-1" href="@Url.Action("Inicio", "Home")">
+                    <img src="~/images/LCFE.png" style="height: 30px;">
                 </a>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Perfil</a></li>
-                    <li><a class="dropdown-item" href="#">Opciones</a></li>
-                    <li><hr class="dropdown-divider" /></li>
-                    <li><a class="dropdown-item" href="#">Salir</a></li>
-                </ul>
-            </li>
-        </ul>
+            </div>
 
+            <!-- Menú de usuario al extremo derecho -->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-user fa-fw"></i>
+                        <span class="ms-2">Jose Manuel</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Perfil</a></li>
+                        <li><a class="dropdown-item" href="#">Opciones</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="#">Salir</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </nav>
+
 
     <!-- Contenedor principal que divide la barra lateral y el contenido -->
     <div id="layoutSidenav">
@@ -62,8 +67,7 @@
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion" style="background-color: #008e60;">
                 <div class="sb-sidenav-menu">
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Core</div>
-
+ 
                         <!-- Enlaces AJAX que cargan contenido dinámicamente sin recargar toda la página
                                 así seran todos los botones
                          -->
@@ -71,6 +75,59 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
                             Inicio
                         </a>
+                        
+                        <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseMantenimientos" aria-expanded="false" aria-controls="collapseMantenimientos">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tools"></i></div>
+                            Agendar
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+
+                        <div class="collapse" id="collapseMantenimientos" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav flex-column">
+
+                                <!-- Preventivo -->
+                                <a class="nav-link text-white ajax-link" href="/Home/Agendar">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tools me-2"></i></div>
+                                    Mantenimiento Preventivo
+                                </a>
+
+                                <!-- Submenú Correctivo -->
+                                <a class="nav-link collapsed text-white" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCorrectivo" aria-expanded="false" aria-controls="collapseCorrectivo">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tools me-2"></i></div>
+                                    Mantenimiento Correctivo
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+
+                                <div class="collapse" id="collapseCorrectivo" data-bs-parent="#collapseMantenimientos">
+                                    <nav class="sb-sidenav-menu-nested nav flex-column ps-3">
+                                        <a class="nav-link text-white ajax-link" href="/Home/MCCFEmatico">
+                                            <i class="fas fa-cash-register me-2"></i> CFEmático
+                                        </a>
+                                        <a class="nav-link text-white ajax-link" href="/Home/MCCFEturno">
+                                            <i class="fas fa-clock me-2"></i> CFEturno
+                                        </a>
+                                        <a class="nav-link text-white ajax-link" href="/Home/MCCFEcam">
+                                            <i class="fas fa-video me-2"></i> CFEcam
+                                        </a>
+                                        <a class="nav-link text-white ajax-link" href="/Home/MCPC">
+                                            <i class="fas fa-desktop me-2"></i> PC
+                                        </a>
+                                        <a class="nav-link text-white ajax-link" href="/Home/MCLaptop">
+                                            <i class="fas fa-laptop me-2"></i> Laptop
+                                        </a>
+                                    </nav>
+                                </div>
+
+
+                                <!-- Terminar mantenimiento -->
+                                <a href="/Home/TerminarMantenimiento" class="nav-link text-white ajax-link">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-upload"></i></div>
+                                    Terminar Mantenimiento
+                                </a>
+                            </nav>
+                        </div>
+
+
                         <a href="/Home/Agendar" class="nav-link ajax-link" style="color: white;">
                             <div class="sb-nav-link-icon"><i class="fas fa-eye"></i></div>
                             Monitoreo de CFEmáticos
@@ -84,10 +141,9 @@
                             Terminar Mantenimiento
                         </a>
                         <a href="/Home/Agendar" class="nav-link ajax-link" style="color: white;">
-                            <div class="sb-nav-link-icon"><i class="fas fa-calendar-plus"></i></div>
-                            Agendar
+                            <div class="sb-nav-link-icon"><i class="fas fa-eye"></i></div>
+                            Monitoreo de CFEmáticos
                         </a>
-
                 </div>
             </nav>
         </div>
@@ -104,11 +160,11 @@
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
                     <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                        <div class="text-muted">Copyright &copy; Comision Federal de Electricidad</div>
                         <div>
-                            <a href="#">Privacy Policy</a>
+                            <a href="#">Política de Privacidad</a>
                             &middot;
-                            <a href="#">Terms &amp; Conditions</a>
+                            <a href="#">Términos &amp; Condiciones</a>
                         </div>
                     </div>
                 </div>
@@ -149,10 +205,10 @@
                 });
             });
         });
+
+
+
     </script>
-
-
-   
 
 </body>
 </html>

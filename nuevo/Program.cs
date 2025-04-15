@@ -14,10 +14,11 @@ using nuevo.Models;
                 app.UseExceptionHandler("/Home/Error");
             }
                 app.UseRouting();
+app.UseAuthorization();
+app.UseDeveloperExceptionPage();
 
-                app.UseAuthorization();
 
-                app.MapStaticAssets();
+app.MapStaticAssets();
 
                 app.MapControllerRoute(
                 name: "default",

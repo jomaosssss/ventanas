@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Agendar Laptop";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-white">
+            <h4 class="mb-0">Mantenimiento correctivo a una Laptop</h4>
+            <p>Hoy es: @DateTime.Now.ToString("dd/MM/yyyy")</p>
+        </div>
+        <div class="card-body">
+            <form>
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="numeroEquipo" class="form-label fw-bold">Num. Activo Fijo:</label>
+                        <input type="number"
+                               class="form-control"
+                               id="numeroEquipo"
+                               name="numeroEquipo"
+                               placeholder="Num. Activo Fijo"
+                               min="0"
+                               max="99999999"
+                               oninput="if(this.value.length > 8) this.value = this.value.slice(0,8)" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="centro" class="form-label fw-bold">Centro:</label>
+                        <select class="form-select" id="centro">
+                            <option value="" disabled selected>Selecciona un centro</option>
+                            <option value="Centro Oaxaca">Oaxaca</option>
+                            <option value="Centro Madero">Madero</option>
+                            <option value="Centro Reforma">Reforma</option>
+                            <option value="Centro San Felipe">San Felipe</option>
+                            <option value="Centro Periférico">Periférico</option>
+                            <option value="Centro CAR">CAR</option>
+                            <option value="Centro Miahuatlán">Miahuatlán</option>
+                            <option value="Centro Ocotlán">Ocotlán</option>
+                            <option value="Centro Tlacolula">Tlacolula</option>
+                            <option value="Centro Etla">Etla</option>
+                            <option value="Centro Zaachila">Zaachila</option>
+                            <!-- Agrega más opciones según necesites -->
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="numeroEquipo" class="form-label fw-bold">RPE:</label>
+                        <input type="text" class="form-control" id="numeroEquipo" placeholder="RPE del encargado del equipo" />
+                    </div>
+                    <div class="col-md-4">
+                        <label for="fecha" class="form-label fw-bold">Fecha Programada:</label>
+                        <input type="date" class="form-control" id="fecha" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    </div>
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-success px-4">Agendar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
