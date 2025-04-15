@@ -65,6 +65,11 @@ namespace nuevo.Controllers
             return PartialView("MCLaptop");
         }
 
+        public IActionResult Monitoreo()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
